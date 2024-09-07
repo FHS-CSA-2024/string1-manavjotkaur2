@@ -87,7 +87,7 @@ public class String1
      * extraEnd("Hi") â†’ "HiHiHi"
      */
     public String extraEnd(String str) {
-        return str.substring(3,5)+str.substring(3,5)+str.substring(3,5);
+        return str.substring(str.length()-2)+str.substring(str.length()-2)+str.substring(str.length()-2);
     }
 
     /*
@@ -152,7 +152,7 @@ public class String1
      */
     public String middleThree(String str) {
         if(str.length()>3){
-            return str.substring(1,str.length()-1);
+            return str.substring(str.length()/3,str.length()-str.length()/3);
         }
         else{
             return str;
@@ -217,12 +217,19 @@ public class String1
      * conCat("abc", "") â†’ "abc"
      */
     public String conCat(String a, String b) {
-        if((a.substring(2).equals(b.substring(0,1)))){
-            return a.substring(0,a.length()-1)+b;
+        String x = (a.substring(a.length()-1));
+        if(b.length()>1){
+            if(x.equals(b.substring(0,1))){
+                return a.substring(0,a.length()-1)+b;
+            }
+            else{
+                return a+b;
+            }
         }
         else{
             return a+b;
         }
+    
     }
 
     /*
@@ -237,10 +244,10 @@ public class String1
      */
     public String minCat(String a, String b) {
         if(a.length()>b.length()){
-            return a.substring(a.length()-b.length(),a.length())+b;
+            return a.substring(a.length()-b.length())+b;
         }
         else{
-            return b.substring(b.length()-a.length(),b.length())+a;
+            return a+b.substring(b.length()-a.length());
         }
     }
 
@@ -273,18 +280,20 @@ public class String1
      * deFront("away") â†’ "aay"
      */
     public String deFront(String str) {    
-        if(str.startsWith("a")&&str.substring(1).equals("b")){
-            str=str.substring(2,str.length());
+        if(str.length()>2){
+        if(str.substring(0,1).equals("a")&&str.substring(1,2).equals("b")){
+            return str.substring(0);
         }
-        if(str.startsWith("a")){
-            str=str.substring(1,str.length());
+        else if(str.substring(0,1).equals("a")){
+            return str.substring(0,1)+str.substring(2);
         }
-        if(str.substring(1).equals("b")){
-            str=str.substring(0)+str.substring(2,str.length());
+        else if(str.substring(2,3).equals("b")){
+            String xyz = str.substring(2);
         }
         else{
-            str=str.substring(2,str.length());
+            return str.substring(2);
         }
-        return str;
     }
+    return unimplemented;
+}
 }
